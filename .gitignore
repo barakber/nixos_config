@@ -1,0 +1,6 @@
+config/private.nix
+
+cachix.nix
+cachix/
+hardware-configuration.nix
+
