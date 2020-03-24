@@ -1,24 +1,37 @@
 { config, pkgs, ... }:
 let
   cli = with pkgs; [
-    typespeed
-    tmux
-    htop
     git
     killall
     wget
-    vim
     autojump
     brightnessctl
-    lnav
+    jq
     csvkit
+    html-xml-utils
+    ripgrep
+    exa
+    poppler_utils
 
     imgcat
     imagemagick
     ffmpeg
+
+    awscli
+  ];
+
+  textual = with pkgs; [
+    typespeed
+    ranger
+    tmux
+    htop
+    lnav
+    neovim'
+    lynx'
   ];
 
   visual = with pkgs; [
+    zathura
     feh
     mplayer
     gimp
@@ -45,6 +58,16 @@ let
     mercury
     terraform
     terragrunt
+    coq
+    (haskell.packages.ghc864.ghcWithPackages (ps: with ps; [Agda]))
+    swiProlog
+  ];
+
+  music = with pkgs; [
+    pavucontrol
+    qjackctl
+    supercollider
+    (haskell.packages.ghc864.ghcWithPackages (ps: with ps; [tidal]))
   ];
 
   other = with pkgs; [
@@ -53,7 +76,7 @@ let
     haskellPackages.xmobar
   ];
 
-  systemPackages = cli ++ visual ++ im ++ programming ++ other;
+  systemPackages = cli ++ textual ++ visual ++ im ++ programming ++ music ++ other;
 in
   systemPackages
 

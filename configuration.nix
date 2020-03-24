@@ -28,15 +28,26 @@
     kernelPackages = pkgs.linuxPackages_latest;
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
+    kernelModules = [ "snd-seq" "snd-rawmidi" ];
   };
 
   hardware = {
     enableAllFirmware = true;
+
     pulseaudio = {
       enable = true;
-      package = pkgs.pulseaudioFull;
+      package = pkgs.pulseaudio.override { jackaudioSupport = true; };
+      extraConfig = ''
+        load-module module-jack-sink
+        load-module module-jack-source
+        '';
     };
+
     brightnessctl.enable = true;
+  };
+
+  systemd.user.services.pulseaudio.environment = {
+    JACK_PROMISCUOUS_SERVER = "jackaudio";
   };
 
   imports =

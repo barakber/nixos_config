@@ -11,6 +11,7 @@ let
       PROMPT='[%D{%f/%m/%y}|%@] %(?.%F{green}√.%F{red}?%?)%f %B%F{240}%1~%f%b %# '
     '';
     shellAliases = {
+      ls = "exa";
       vim = "nvim";
       identify = "python ~/Downloads/identify.py";
       figure   = "~/figure";

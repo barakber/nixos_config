@@ -9,7 +9,12 @@ let
            '';
         });
 
+        awscli  = import ./awscli/default.nix { inherit pkgs; };
+        neovim'  = import ./neovim/default.nix { inherit pkgs; };
+        ranger = import ./ranger/default.nix { inherit pkgs; };
+        lynx'  = import ./lynx/default.nix { inherit pkgs; };
         mercury = import ./mercury.nix { inherit config pkgs; };
+        swiProlog = import ./swipl/default.nix { inherit pkgs; };
       }
       )
   ];
