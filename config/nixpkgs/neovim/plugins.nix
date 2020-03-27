@@ -145,6 +145,10 @@
       rev = "5606b8146b8ae2efbaa14b30207a4e0b70e5826c";
       sha256 = "1x64d8jdlcw16pcp19xb0krd1jfqhva4xsxif8xc11pyj52sxxlh";
     };
+    postInstall = ''
+      sed -i "s|  split term://tidal|  split term://$out/share/vim-plugins/vim-tidal/bin/tidal|g" $out/share/vim-plugins/vim-tidal/plugin/tidal.vim
+      cat plugin/tidal.vim | grep "term:"
+    '';
     dependencies = [];
   };
 

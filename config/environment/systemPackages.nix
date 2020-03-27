@@ -59,7 +59,6 @@ let
     terraform
     terragrunt
     coq
-    (haskell.packages.ghc864.ghcWithPackages (ps: with ps; [Agda]))
     swiProlog
   ];
 
@@ -67,13 +66,13 @@ let
     pavucontrol
     qjackctl
     supercollider
-    (haskell.packages.ghc864.ghcWithPackages (ps: with ps; [tidal]))
   ];
 
   other = with pkgs; [
     cacert
     iana-etc
     haskellPackages.xmobar
+    (haskell.packages.ghc864.ghcWithPackages (ps: with ps; [Agda tidal]))
   ];
 
   systemPackages = cli ++ textual ++ visual ++ im ++ programming ++ music ++ other;

@@ -21,6 +21,7 @@ in
         customRC = ''
           " vim config
           let mapleader = ","
+          let maplocalleader=","
           set noswapfile
           set expandtab
           set tabstop=4
@@ -37,6 +38,9 @@ in
           nnoremap <C-K> <C-W><C-K>
           nnoremap <C-L> <C-W><C-L>
           nnoremap <C-H> <C-W><C-H>
+          '' +
+          ''
+          nnoremap <Leader>j :TidalSend<CR>
           '' +
           ''
           let g:EasyMotion_keys = get(g:, 'EasyMotion_keys', 'asdghklqwertyuiopzxcvbnmfj')
