@@ -134,6 +134,7 @@ in
             "typescript-vim"
             "Tabular"
             "agda-vim"
+            "vim-toml"
           ]; }
         ];
       };

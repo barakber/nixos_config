@@ -6,6 +6,7 @@ let
     wget
     autojump
     brightnessctl
+    hexd
     jq
     csvkit
     html-xml-utils
@@ -17,7 +18,14 @@ let
     imagemagick
     ffmpeg
 
+  ];
+
+  devops = with pkgs; [
+    nixops
     awscli
+    amazon-ecs-cli
+    terraform
+    terragrunt
   ];
 
   textual = with pkgs; [
@@ -49,17 +57,24 @@ let
     citrix_workspace
   ];
 
+  haskell' = import ./haskell.nix { inherit config pkgs; };
+
+  python' = import ./python.nix { inherit config pkgs; };
+
   programming = with pkgs; [
     nix-prefetch-git
     cabal2nix
     gnumake
+    cmake
     nodejs
     jdk
     mercury
-    terraform
-    terragrunt
     coq
     swiProlog
+    cue
+
+    haskell'
+    python'
   ];
 
   music = with pkgs; [
@@ -72,10 +87,9 @@ let
     cacert
     iana-etc
     haskellPackages.xmobar
-    (haskell.packages.ghc864.ghcWithPackages (ps: with ps; [Agda tidal]))
   ];
 
-  systemPackages = cli ++ textual ++ visual ++ im ++ programming ++ music ++ other;
+  systemPackages = cli ++ textual ++ visual ++ im ++ devops ++ programming ++ music ++ other;
 in
   systemPackages
 

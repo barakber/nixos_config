@@ -26,7 +26,7 @@ python36Packages.buildPythonApplication rec {
                             xsv
                             jq
                             binutils
-                            xxd
+                            hexd
                             git
                             poppler_utils
                           ];

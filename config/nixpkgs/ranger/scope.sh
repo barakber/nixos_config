@@ -63,7 +63,7 @@ try_git()
 
 hexdump()
 {
-    xxd -l 880 "${FILE_PATH}" && exit 4 || exit 1
+    hexd -r 0+0x4000 "${FILE_PATH}" && exit 4 || exit 1
 }
 
 elf_headers()

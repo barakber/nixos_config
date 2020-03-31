@@ -13,6 +13,7 @@ let
     shellAliases = {
       ls = "exa";
       vim = "nvim";
+      xxd = "hexd";
       identify = "python ~/Downloads/identify.py";
       figure   = "~/figure";
       simulate = "faker -r 1000 -s=\" \" ";

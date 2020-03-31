@@ -10,6 +10,7 @@ let
         });
 
         awscli  = import ./awscli/default.nix { inherit pkgs; };
+        amazon-ecs-cli'  = import ./ecscli/default.nix { inherit pkgs; };
         neovim'  = import ./neovim/default.nix { inherit pkgs; };
         ranger = import ./ranger/default.nix { inherit pkgs; };
         lynx'  = import ./lynx/default.nix { inherit pkgs; };
