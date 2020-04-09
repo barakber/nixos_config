@@ -21,6 +21,7 @@ let
   ];
 
   devops = with pkgs; [
+    docker-compose
     nixops
     awscli
     amazon-ecs-cli
@@ -34,8 +35,10 @@ let
     tmux
     htop
     lnav
+    gcalcli
     neovim'
     lynx'
+    weechat'
   ];
 
   visual = with pkgs; [
@@ -49,6 +52,8 @@ let
     libreoffice
     chromium
     baobab
+
+    #quartus-prime
   ];
 
   im = with pkgs; [
@@ -87,6 +92,7 @@ let
     cacert
     iana-etc
     haskellPackages.xmobar
+    xxHash
   ];
 
   systemPackages = cli ++ textual ++ visual ++ im ++ devops ++ programming ++ music ++ other;

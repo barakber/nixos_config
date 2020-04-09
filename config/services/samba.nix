@@ -12,10 +12,10 @@ let
       security = user
       #use sendfile = yes
       #max protocol = smb2
-      hosts allow = 10.0.0  localhost
+      hosts allow = 10.0.0.0/24  localhost
       hosts deny = 0.0.0.0/0
       guest account = nobody
-      map to guest = bad user
+      #map to guest = bad user
     '';
     shares = {
       public = {

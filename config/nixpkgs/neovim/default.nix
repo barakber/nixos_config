@@ -15,6 +15,7 @@ in
         packages.vim-tidal.start = with plugins; [ vim-tidal ];
         #packages.vim-pandoc-markdown-preview.start = with plugins; [ vim-pandoc-markdown-preview ];
         packages.rainbow_csv.start = with plugins; [ rainbow_csv ];
+        #packages.vimpyter.start = with plugins; [ vimpyter ];
         #packages.LanguageClient-neovim.start = with plugins; [ LanguageClient-neovim ];
         #packages.tlaplus.start = with plugins; [ tlaplus ];
         #packages.repl-vim.start = with plugins; [ repl-vim ];
