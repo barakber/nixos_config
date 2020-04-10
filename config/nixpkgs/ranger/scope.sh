@@ -263,7 +263,7 @@ handle_mime() {
             exiftool "${FILE_PATH}" && exit 5
             ;;
 
-        application/x-executable|application/x-sharedlib)
+        application/x-executable|application/x-sharedlib|application/x-pie-executable)
             on_elf
             ;;
 

@@ -66,7 +66,8 @@ let
           URxvt*saveLines:            32767
           XTerm*saveLines:            32767
           URxvt.colorUL:              #AED210
-          URxvt.perl-ext:             default,url-select
+          URxvt.perl-ext:             default,url-select,bidi
+          URxvt.bidi.enabled:         1
           URxvt.keysym.M-u:           perl:url-select:select_next
           URxvt.url-select.launcher:  /usr/bin/firefox -new-tab
           URxvt.url-select.underline: true

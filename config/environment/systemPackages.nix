@@ -36,9 +36,9 @@ let
     htop
     lnav
     gcalcli
-    neovim'
-    lynx'
-    weechat'
+    neovim
+    lynx
+    weechat
   ];
 
   visual = with pkgs; [

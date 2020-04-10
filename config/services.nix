@@ -9,6 +9,7 @@ let
 
     urxvtd = {
       enable = true;
+      package = pkgs.rxvt_unicode_with-plugins;
     };
 
     #mpd = {

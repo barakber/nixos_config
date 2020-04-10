@@ -32,6 +32,7 @@ let
                   "timer"
                   "fzf"
                   "autojump"
+                  "colored-man-pages"
                 ];
     };
   };
