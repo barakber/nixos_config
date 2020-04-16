@@ -1,4 +1,4 @@
-{ vimUtils, fetchgit }:
+{ pkgs, vimUtils, fetchgit }:
 {
   coquille = vimUtils.buildVimPluginFrom2Nix {
     name = "coquille";
@@ -153,15 +153,15 @@
   };
 
 
-  #vimpyter = vimUtils.buildVimPluginFrom2Nix {
-    #name = "vimpyter";
-    #src = fetchgit {
-      #url = "https://github.com/szymonmaszke/vimpyter";
-      #rev = "25a0acbe81d445ece0df78cb23e2d5011df1b63a";
-      #sha256 = "0kwf8ls5nar8wa36lfrbm3ysryim2pcz9ywv18rjqfp7wacz683c";
-    #};
-    #postInstall = ''
-    #'';
-    #dependencies = [];
-  #};
+  vimpyter = vimUtils.buildVimPluginFrom2Nix {
+    name = "vimpyter";
+    src = fetchgit {
+      url = "https://github.com/szymonmaszke/vimpyter";
+      rev = "25a0acbe81d445ece0df78cb23e2d5011df1b63a";
+      sha256 = "0kwf8ls5nar8wa36lfrbm3ysryim2pcz9ywv18rjqfp7wacz683c";
+    };
+    postInstall = ''
+    '';
+    dependencies = [];
+  };
 }

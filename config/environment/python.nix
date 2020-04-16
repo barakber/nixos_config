@@ -166,6 +166,36 @@ let
     doCheck = false;
   };
 
+  "pandoc-attributes" = pkgs.python37.pkgs.buildPythonPackage rec {
+    name = "pandoc-attributes";
+    src = pkgs.fetchurl {
+      url = "https://files.pythonhosted.org/packages/c2/0a/442cc9237dc997cd88155bdcb54bf86e703e699881f4134ecb733ccd670c/pandoc-attributes-0.1.7.tar.gz";
+      sha256 = "132a60j85s8834xwcw9vvbsyx0ssr1icw4bh67qmsky7v811a8k9";
+    };
+    buildDepends = with pkgs; [
+    ];
+    propagatedBuildInputs = with pkgs.python37.pkgs; [
+      pandocfilters
+    ];
+    doCheck = false;
+  };
+
+  "notedown" = pkgs.python37.pkgs.buildPythonPackage rec {
+    name = "notedown";
+    src = pkgs.fetchurl {
+      url = "https://files.pythonhosted.org/packages/58/1b/a926945216cb7d1d21abdbc975195bd7beb3bceafa41c186ecb95f8f9121/notedown-1.5.1.tar.gz";
+      sha256 = "1vm1agiqnpxr3gw8zxkx4d85rg6m24vazzrin3xa1b75pgmk7q1n";
+    };
+    buildDepends = with pkgs; [
+    ];
+    propagatedBuildInputs = with pkgs.python37.pkgs; [
+      six
+      pandoc-attributes
+      nbconvert
+    ];
+    doCheck = false;
+  };
+
   python' = pkgs.python37.withPackages (ps: with ps; [
     numpy
     pandas
@@ -186,6 +216,7 @@ let
     #qiskit
 
     jupytext
+    notedown
     glances
   ]);
 in
