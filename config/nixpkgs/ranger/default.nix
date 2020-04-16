@@ -20,6 +20,7 @@ python36Packages.buildPythonApplication rec {
   propagatedBuildInputs = [ file
                             w3m
                             highlight
+                            bat
                             atool
                             mediainfo
                             odt2txt

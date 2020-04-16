@@ -8,12 +8,13 @@ let
       export FZF_BASE=${pkgs.fzf}
     '';
     promptInit = ''
-      PROMPT='[%D{%f/%m/%y}|%@] %(?.%F{green}√.%F{red}?%?)%f %B%F{240}%1~%f%b %# '
+      PROMPT='[%F{086}%D{%f/%m/%y}%f|%F{086}%@%f] %(?.%F{green}√.%F{red}?%?)%f %B%F{240}%1~%f%b %# '
     '';
     shellAliases = {
       ls = "exa";
       vim = "nvim";
       xxd = "hexd";
+      cat = "bat";
       identify = "python ~/Downloads/identify.py";
       figure   = "~/figure";
       simulate = "faker -r 1000 -s=\" \" ";

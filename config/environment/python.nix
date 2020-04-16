@@ -139,6 +139,20 @@ let
     };
   };
 
+  "bucketstore" = pkgs.python37.pkgs.buildPythonPackage rec {
+    name = "bucketstore";
+    src = pkgs.fetchurl {
+      url = "https://files.pythonhosted.org/packages/bd/c5/d88b08fe93bd54a9821295adf4a32cd188b2951354569e406ba673b01d7f/bucketstore-0.2.1.tar.gz";
+      sha256 = "1yli5l3gba7kxd3s1525cprg1hlmwq6r1adnm0jfmskfwby5ph1n";
+    };
+    buildDepends = with pkgs; [
+    ];
+    propagatedBuildInputs = with pkgs.python37.pkgs; [
+      boto3
+    ];
+    doCheck = false;
+  };
+
   "PyMonad" = pkgs.python37.pkgs.buildPythonPackage rec {
     name = "PyMonad";
     src = pkgs.fetchurl {
@@ -166,6 +180,9 @@ let
     psycopg2
     sqlalchemy
     blaze
+    hypothesis
+    boto3
+    bucketstore
     #qiskit
 
     glances

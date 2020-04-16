@@ -1,18 +1,23 @@
 { config, pkgs, ... }:
 let
   cli = with pkgs; [
-    git
+    gitAndTools.git
+    delta
+
     killall
     wget
     autojump
     brightnessctl
-    hexd
     jq
     csvkit
     html-xml-utils
+    poppler_utils
+    hexd
     ripgrep
     exa
-    poppler_utils
+    bat
+    tealdeer
+    procs
 
     imgcat
     imagemagick
@@ -23,6 +28,7 @@ let
   devops = with pkgs; [
     docker-compose
     nixops
+    azure-cli
     awscli
     amazon-ecs-cli
     terraform

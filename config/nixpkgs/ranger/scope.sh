@@ -116,7 +116,7 @@ on_json()
             local pygmentize_format='terminal'
             local highlight_format='ansi'
         fi
-        head -4000 "${FILE_PATH}" | jq . | highlight --syntax=json --out-format="${highlight_format}"
+        head -4000 "${FILE_PATH}" | jq . | bat --language json --theme TwoDark --color always --decorations never -pp
     fi
     exit 5;
 }
@@ -152,8 +152,7 @@ on_highlight()
         local pygmentize_format='terminal'
         local highlight_format='ansi'
     fi
-    highlight --replace-tabs="${HIGHLIGHT_TABWIDTH}" --out-format="${highlight_format}" \
-        --style="${HIGHLIGHT_STYLE}" -- "${FILE_PATH}" && exit 5
+    bat --color always --decorations never -pp -- "${FILE_PATH}" && exit 5
     # pygmentize -f "${pygmentize_format}" -O "style=${PYGMENTIZE_STYLE}" -- "${FILE_PATH}" && exit 5
 }
 
