@@ -185,6 +185,7 @@ let
     bucketstore
     #qiskit
 
+    jupytext
     glances
   ]);
 in

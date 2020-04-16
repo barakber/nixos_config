@@ -30,6 +30,7 @@ python36Packages.buildPythonApplication rec {
                             hexd
                             git
                             poppler_utils
+                            (python37.withPackages (ps: with ps; [jupytext pandoc setuptools]))
                           ];
 
   checkPhase = ''

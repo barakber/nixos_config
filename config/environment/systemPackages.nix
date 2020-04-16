@@ -16,6 +16,7 @@ let
     ripgrep
     exa
     bat
+    fd
     tealdeer
     procs
 

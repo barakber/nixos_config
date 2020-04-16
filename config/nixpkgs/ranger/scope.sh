@@ -116,7 +116,7 @@ on_json()
             local pygmentize_format='terminal'
             local highlight_format='ansi'
         fi
-        head -4000 "${FILE_PATH}" | jq . | bat --language json --theme TwoDark --color always --decorations never -pp
+        head -4000 "${FILE_PATH}" | jq . | bat --language json --theme TwoDark --color always --number
     fi
     exit 5;
 }
@@ -152,7 +152,7 @@ on_highlight()
         local pygmentize_format='terminal'
         local highlight_format='ansi'
     fi
-    bat --color always --decorations never -pp -- "${FILE_PATH}" && exit 5
+    bat --color always --number -- "${FILE_PATH}" && exit 5
     # pygmentize -f "${pygmentize_format}" -O "style=${PYGMENTIZE_STYLE}" -- "${FILE_PATH}" && exit 5
 }
 
@@ -180,6 +180,13 @@ handle_extension() {
             pdftotext -l 10 -nopgbrk -q -- "${FILE_PATH}" - && exit 5
             exiftool "${FILE_PATH}" && exit 5
             exit 1;;
+
+        # Jupyter notebook
+        ipynb)
+            try_git
+            jupytext --to md -o - "${FILE_PATH}" | bat --language markdown --color always --number && exit 5
+            exit 1;;
+
 
         # BitTorrent
         torrent)
