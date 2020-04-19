@@ -66,10 +66,12 @@ let
           URxvt*saveLines:            32767
           XTerm*saveLines:            32767
           URxvt.colorUL:              #AED210
-          URxvt.perl-ext:             default,url-select,bidi
+          URxvt.perl-ext:             default,url-select,bidi,selection-to-clipboard,keyboard-select
           URxvt.bidi.enabled:         1
           URxvt.keysym.M-u:           perl:url-select:select_next
-          URxvt.url-select.launcher:  /usr/bin/firefox -new-tab
+          URxvt.keysym.M-Escape:      perl:keyboard-select:activate
+          URxvt.keysym.M-s:           perl:keyboard-select:search
+          URxvt.url-select.launcher:  chromium
           URxvt.url-select.underline: true
           Xft*dpi:                    96
           Xft*antialias:              true
