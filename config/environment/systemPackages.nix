@@ -3,6 +3,7 @@ let
   cli = with pkgs; [
     gitAndTools.git
     delta
+    dvc
 
     killall
     wget
@@ -19,6 +20,7 @@ let
     fd
     tealdeer
     procs
+    go-jira
 
     imgcat
     imagemagick
@@ -27,6 +29,7 @@ let
   ];
 
   devops = with pkgs; [
+    gnutls
     docker-compose
     nixops
     azure-cli
@@ -34,6 +37,8 @@ let
     amazon-ecs-cli
     terraform
     terragrunt
+    kubectl
+    kubernetes-helm
   ];
 
   textual = with pkgs; [
@@ -44,6 +49,7 @@ let
     lnav
     gcalcli
     neovim
+    neovim-remote
     lynx
     weechat
   ];
@@ -83,6 +89,7 @@ let
     mercury
     coq
     swiProlog
+    #scryer-prolog
     cue
 
     haskell'
@@ -100,6 +107,7 @@ let
     iana-etc
     haskellPackages.xmobar
     xxHash
+    texlive.combined.scheme-full
   ];
 
   systemPackages = cli ++ textual ++ visual ++ im ++ devops ++ programming ++ music ++ other;

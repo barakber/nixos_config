@@ -196,10 +196,28 @@ let
     doCheck = false;
   };
 
+  #"pandas" = pkgs.python37.pkgs.buildPythonPackage rec {
+    #name = "pandas";
+    #src = pkgs.fetchurl {
+      #url = "https://files.pythonhosted.org/packages/2f/79/f236ab1cfde94bac03d7b58f3f2ab0b1cc71d6a8bda3b25ce370a9fe4ab1/pandas-1.0.3.tar.gz";
+      #sha256 = "32f42e322fb903d0e189a4c10b75ba70d90958cc4f66a1781ed027f1a1d14586";
+    #};
+    #buildDepends = with pkgs; [
+    #];
+    #propagatedBuildInputs = with pkgs.python37.pkgs; [
+      #cython
+      #numpy
+      #pytz
+      #python-dateutil
+    #];
+    #doCheck = false;
+  #};
+
   python' = pkgs.python37.withPackages (ps: with ps; [
     numpy
     pandas
     scikitlearn
+    xgboost
     pyarrow
     PyMonad
     ipython
@@ -213,6 +231,7 @@ let
     hypothesis
     boto3
     bucketstore
+    loguru
     #qiskit
 
     jupytext

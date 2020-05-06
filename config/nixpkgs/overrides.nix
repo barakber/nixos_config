@@ -18,8 +18,10 @@ let
     mercury         = import ./mercury.nix        { inherit config pkgs; };
     swiProlog       = import ./swipl/default.nix  { inherit pkgs; };
     weechat         = import ./weechat/default.nix { inherit pkgs; };
+    #scryer-prolog   = import ./scryer-prolog/default.nix { inherit pkgs; };
     delta           = with pkgs; import ./delta/default.nix { inherit lib fetchFromGitHub rustPlatform; };
     rxvt_unicode_with-plugins = nixpkgs.rxvt_unicode_with-plugins;
+    dvc = nixpkgs.dvc;
     #quartus-prime   = pkgs.callPackage ./quartus-prime/default.nix {};
   };
 in

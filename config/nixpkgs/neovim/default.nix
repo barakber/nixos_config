@@ -67,6 +67,11 @@ in
           nnoremap <Leader>s :Rg <C-R>=expand('<cword>')<cr><cr>
           '' +
           ''
+          let g:vimtex_compiler_progname = 'nvr'
+          let g:tex_flavor = "latex"
+          let g:vimtex_view_general_viewer = 'zathura'
+          '' +
+          ''
           '' +
           ''
           let g:filetype_pl="prolog"
@@ -139,6 +144,7 @@ in
             "Tabular"
             "agda-vim"
             "vim-toml"
+            "vimtex"
           ]; }
         ];
       };

@@ -1,5 +1,14 @@
 { pkgs, vimUtils, fetchgit }:
 {
+  fzf = vimUtils.buildVimPluginFrom2Nix {
+    name = "fzf.vim";
+    src = fetchgit {
+      url = "https://github.com/junegunn/fzf.vim";
+      rev = "f86ef1bce602713fe0b5b68f4bdca8c6943ecb59";
+      sha256 = "0h3mlc4lvnlzg7pfrr09vrfn93lglzfp5ca6bl4jhsi63xw7x3ad";
+    };
+  };
+
   coquille = vimUtils.buildVimPluginFrom2Nix {
     name = "coquille";
     src = fetchgit {
