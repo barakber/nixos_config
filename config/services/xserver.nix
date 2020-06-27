@@ -102,7 +102,7 @@ let
         enable = true;
         enableContribAndExtras = true;
         config = ''
-import Data.List (isInfixOf)
+import Data.List (isInfixOf, map)
 import Data.Char (toLower)
 import qualified Data.Map as Map
 import System.IO
@@ -124,8 +124,10 @@ import XMonad.Layout.ThreeColumns
 import XMonad.Util.Run      (spawnPipe)
 import XMonad.Util.EZConfig (additionalKeys)
 import XMonad.Actions.CycleWS
+import XMonad.Actions.Submap
 import Graphics.X11.ExtraTypes.XF86
 import qualified XMonad.StackSet as W
+import Data.Function (fix)
 
 --
 myTerminal = "urxvtc"
@@ -183,14 +185,46 @@ tabConfig = defaultTheme
     , inactiveColor = "#000000"
     }
 
+
 --
 myModMask = mod4Mask
+altMask = mod1Mask
+
+(?) :: Bool -> a -> a -> a
+True ? a = const a
+False ? a = id
 
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = Map.fromList $
     [ -- start terminal
       ( (modMask, xK_Return)
       , spawn $ XMonad.terminal conf
       )
+
+      -- mouse submap
+     , ((modMask, xK_m),
+         fix (\cmd ->
+           submap . Map.fromList $
+             map (\(a,b,c) -> (a, b >> (c ? cmd $ return ())))
+             [ ((0, xK_Escape),                return (),                                                         False)
+             , ((0, xK_h),                     spawn "xdotool mousemove_relative -- -20 0",                       True)
+             , ((0, xK_j),                     spawn "xdotool mousemove_relative --  0  20",                      True)
+             , ((0, xK_k),                     spawn "xdotool mousemove_relative --  0 -20",                      True)
+             , ((0, xK_l),                     spawn "xdotool mousemove_relative --  20 0",                       True)
+             , ((shiftMask, xK_h),             spawn "xdotool mousemove_relative -- -120 0",                       True)
+             , ((shiftMask, xK_j),             spawn "xdotool mousemove_relative --  0  120",                      True)
+             , ((shiftMask, xK_k),             spawn "xdotool mousemove_relative --  0 -120",                      True)
+             , ((shiftMask, xK_l),             spawn "xdotool mousemove_relative --  120 0",                       True)
+             , ((altMask, xK_h),               spawn "xdotool mousemove_relative -- -5  0",                       True)
+             , ((altMask, xK_j),               spawn "xdotool mousemove_relative --  0  5",                       True)
+             , ((altMask, xK_k),               spawn "xdotool mousemove_relative --  0 -5",                       True)
+             , ((altMask, xK_l),               spawn "xdotool mousemove_relative --  5  0",                       True)
+             , ((0, xK_m),                     spawn "xdotool mousemove --polar  0 0",                            True)
+             , ((shiftMask, xK_m),             spawn "xdotool getwindowfocus mousemove --window %1 --polar  0 0", True)
+             , ((0, xK_f),                     spawn "xdotool click --clearmodifiers 1 && xdotool click 1",       True)
+             , ((0, xK_g),                     spawn "xdotool click --clearmodifiers 3 && xdotool click 3",       True)
+             , ((altMask .|. shiftMask, xK_j), spawn "sleep 0.2 && xdotool click --clearmodifiers 4",             True)
+             , ((altMask .|. shiftMask, xK_k), spawn "sleep 0.2 && xdotool click --clearmodifiers 5",             True)
+             ]))
 
       -- lock screen
     , ( (modMask .|. controlMask, xK_l)
@@ -306,9 +340,9 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = Map.fromList $
       )
 
       -- Move focus to the master window.
-    , ( (modMask, xK_m)
-      , windows W.focusMaster
-      )
+    -- , ( (modMask, xK_m)
+    --   , windows W.focusMaster
+    --   )
 
       -- Swap the focused window and the master window.
     -- , ( (modMask, xK_Return)
@@ -373,6 +407,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = Map.fromList $
     , ( (0, xF86XK_MonBrightnessDown)
       , spawn "brightnessctl s 5%-"
       )
+
     ] ++
 
     -- mod-[1..9], Switch to workspace N
@@ -388,6 +423,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = Map.fromList $
     | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
     , (f, m)    <- [(W.view, 0), (W.shift, shiftMask)]
     ]
+
+
 
 --
 myFocusFollowsMouse :: Bool
@@ -430,6 +467,7 @@ main = do
     spawn myWorkScreenResolution
     -- spawn "xrandr --output DP1  --scale 1.5x1.5"
     spawn "xcompmgr -c -f"
+    spawn "keynav"
     xmproc <- spawnPipe "xmobar /home/barak/.xmonad/xmobar.hs"
     xmonad $ defaults
            { logHook = dynamicLogWithPP $ xmobarPP

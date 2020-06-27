@@ -59,20 +59,25 @@ let
     feh
     mplayer
     gimp
+    meld
     inkscape
     vokoscreen
     shutter
     libreoffice
     chromium
     baobab
+    keynav
+    xdotool
+    onboard
 
+    #ds9
     #quartus-prime
   ];
 
   im = with pkgs; [
     skype
     zoom-us
-    citrix_workspace
+    #citrix_workspace
   ];
 
   haskell' = import ./haskell.nix { inherit config pkgs; };

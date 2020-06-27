@@ -9,7 +9,12 @@ let
 
     urxvtd = {
       enable = true;
-      package = pkgs.rxvt_unicode_with-plugins;
+      package = pkgs.rxvt_unicode-with-plugins;
+    };
+
+    xrdp = {
+      enable = true;
+      defaultWindowManager = "${pkgs.icewm}/bin/icewm";
     };
 
     #mpd = {

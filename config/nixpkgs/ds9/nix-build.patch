@@ -1,0 +1,13 @@
+diff --git a/make.include b/make.include
+index a4e78ceb..868c9474 100644
+--- a/make.include
++++ b/make.include
+@@ -117,6 +117,8 @@ tclxml/Makefile :
+ 	@echo "*** $@ ***"
+ 	cd tclxml; \
+ 	./configure \
++	--with-xml2-config=`which xml2-config` \
++	--with-xslt-config=`which xslt-config` \
+ 	$(WITHTCL) \
+ 	$(TCLXMLFLAGS) \
+ 	$(PREFIX) \

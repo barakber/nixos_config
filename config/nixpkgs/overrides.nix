@@ -1,9 +1,9 @@
 { config, pkgs, ... }:
 let
   nixpkgsTarGz = builtins.fetchTarball
-    { name   = "20.03-beta";
-      url    = "https://github.com/NixOS/nixpkgs/archive/20.03-beta.tar.gz";
-      sha256 = "sha256:04g53i02hrdfa6kcla5h1q3j50mx39fchva7z7l32pk699nla4hi";
+    { name   = "20.03";
+      url    = "https://github.com/NixOS/nixpkgs/archive/20.03.tar.gz";
+      sha256 = "0182ys095dfx02vl2a20j1hz92dx3mfgz2a6fhn31bqlp1wa8hlq";
     };
   nixpkgs = import nixpkgsTarGz
     { config.allowUnfree = true;
@@ -18,11 +18,12 @@ let
     mercury         = import ./mercury.nix        { inherit config pkgs; };
     swiProlog       = import ./swipl/default.nix  { inherit pkgs; };
     weechat         = import ./weechat/default.nix { inherit pkgs; };
+    ds9             = pkgs.callPackage ./ds9/ds9.nix {};
     #scryer-prolog   = import ./scryer-prolog/default.nix { inherit pkgs; };
     delta           = with pkgs; import ./delta/default.nix { inherit lib fetchFromGitHub rustPlatform; };
-    rxvt_unicode_with-plugins = nixpkgs.rxvt_unicode_with-plugins;
     dvc = nixpkgs.dvc;
-    #quartus-prime   = pkgs.callPackage ./quartus-prime/default.nix {};
+    unstick = nixpkgs.unstick;
+    quartus-prime   = pkgs.callPackage ./quartus-prime/default.nix {};
   };
 in
   packageOverrides

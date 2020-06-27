@@ -10,7 +10,7 @@ let
     firewall = {
       enable = true;
       allowPing = true;
-      allowedTCPPorts = [ 53 12345 22 139 445 ];
+      allowedTCPPorts = [ 53 12345 22 139 445 3389 ];
       allowedUDPPorts = [ 53 137 138 ];
     };
 

@@ -13,7 +13,7 @@
   users       = import ./config/users.nix { inherit config pkgs; };
 
   nix = {
-    useSandbox = false;
+    useSandbox = true;
     binaryCaches = [];
   };
 
@@ -53,6 +53,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./cachix.nix
     ];
 
   i18n = {

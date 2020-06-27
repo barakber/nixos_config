@@ -153,6 +153,19 @@ let
     doCheck = false;
   };
 
+  "pyephem" = pkgs.python37.pkgs.buildPythonPackage rec {
+    name = "pyephem";
+    src = pkgs.fetchurl {
+      url = "https://files.pythonhosted.org/packages/fe/df/7bceaef11e9cc0a9a98930bf2d7a90c71058f49c446a4b2c7cd1ccf35c1b/ephem-3.7.7.1.tar.gz";
+      sha256 = "36b51a8dc7cfdeb456dd6b8ab811accab8341b2d562ee3c6f4c86f6d3dbb984e";
+    };
+    buildDepends = with pkgs; [
+    ];
+    propagatedBuildInputs = with pkgs.python37.pkgs; [
+    ];
+    doCheck = false;
+  };
+
   "PyMonad" = pkgs.python37.pkgs.buildPythonPackage rec {
     name = "PyMonad";
     src = pkgs.fetchurl {
@@ -237,6 +250,7 @@ let
     jupytext
     notedown
     glances
+    pyephem
   ]);
 in
   python'
