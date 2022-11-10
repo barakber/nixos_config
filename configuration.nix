@@ -21,7 +21,7 @@
     stateVersion = "19.09"; # Did you read the comment?
     # Auto upgrade system
     autoUpgrade.enable = true;
-    autoUpgrade.channel = "https://nixos.org/channels/nixos-19.09/";
+    autoUpgrade.channel = "https://nixos.org/channels/nixos-22.05/";
   };
 
   boot = {
@@ -32,35 +32,38 @@
   };
 
   hardware = {
-    enableAllFirmware = true;
+#    enableAllFirmware = true;
 
-    pulseaudio = {
-      enable = true;
-      package = pkgs.pulseaudio.override { jackaudioSupport = true; };
-      extraConfig = ''
-        load-module module-jack-sink
-        load-module module-jack-source
-        '';
-    };
+#    pulseaudio = {
+#      enable = true;
+#      package = pkgs.pulseaudio.override { jackaudioSupport = true; };
+#      extraConfig = ''
+#        load-module module-jack-sink
+#        load-module module-jack-source
+#        '';
+#    };
+#
+#    brightnessctl.enable = true;
+  };
 
-    brightnessctl.enable = true;
+  fileSystems."/" = {
+    fsType = "ext4";
+    device = "/dev/sda";
   };
 
   systemd.user.services.pulseaudio.environment = {
-    JACK_PROMISCUOUS_SERVER = "jackaudio";
+#    JACK_PROMISCUOUS_SERVER = "jackaudio";
   };
 
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./cachix.nix
+#      ./hardware-configuration.nix
+#      ./cachix.nix
     ];
 
-  i18n = {
-    consoleFont = "Lat2-Terminus16";
-    consoleKeyMap = "us";
-    defaultLocale = "en_US.UTF-8";
-    supportedLocales = ["en_US.UTF-8/UTF-8" "he_IL.UTF-8/UTF-8"];
+  console = {
+    font = "Lat2-Terminus16";
+    keyMap = "us";
   };
 
   time = {

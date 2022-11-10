@@ -9,25 +9,6 @@
     };
   };
 
-  coquille = vimUtils.buildVimPluginFrom2Nix {
-    name = "coquille";
-    src = fetchgit {
-      url = "https://github.com/kriw/coquille";
-      rev = "e1611a6ec3c17ca8a8b7ec47d9810bfb15d00576";
-      sha256 = "069hfhwfr4a460hx9x5i4vfxlbacw1vwv6jd93v6dvadpdylr5x5";
-    };
-  };
-
-  tlaplus = vimUtils.buildVimPluginFrom2Nix {
-    name = "tla";
-    src = fetchgit {
-      url = "https://github.com/hwayne/tla.vim";
-      rev = "0d6d453a401542ce1db247c6fd139ac99b8a5add";
-      sha256 = "1bfxnvx3g5679jan7v5prh7zk0f77m81g8c9ngq75nxdn20ihl7l";
-    };
-    dependencies = [];
-  };
-
   minimap = vimUtils.buildVimPluginFrom2Nix { # created by nix#NixDerivation
     name = "minimap";
     src = fetchgit {
@@ -58,15 +39,15 @@
     dependencies = [];
   };
 
-  vim-ripgrep = vimUtils.buildVimPluginFrom2Nix {
-    name = "vim-ripgrep";
-    src = fetchgit {
-      url = "https://github.com/jremmen/vim-ripgrep";
-      rev = "ec87af6b69387abb3c4449ce8c4040d2d00d745e";
-      sha256 = "1by56rflr0bmnjvcvaa9r228zyrmxwfkzkclxvdfscm7l7n7jnmh";
-    };
-    dependencies = [];
-  };
+#  vim-ripgrep = vimUtils.buildVimPluginFrom2Nix {
+#    name = "vim-ripgrep";
+#    src = fetchgit {
+#      url = "https://github.com/jremmen/vim-ripgrep";
+#      rev = "ec87af6b69387abb3c4449ce8c4040d2d00d745e";
+#      sha256 = "1by56rflr0bmnjvcvaa9r228zyrmxwfkzkclxvdfscm7l7n7jnmh";
+#    };
+#    dependencies = [];
+#  };
 
   repl-vim = vimUtils.buildVimPluginFrom2Nix {
     name = "repl-vim";
@@ -108,35 +89,6 @@
     dependencies = [];
   };
 
-  LanguageClient-neovim = vimUtils.buildVimPluginFrom2Nix {
-    name = "LanguageClient-neovim";
-    src = fetchgit {
-      url = "https://github.com/autozimu/LanguageClient-neovim";
-      rev = "109f77ff32c60fb28d406e1801d6b4c2828f7280";
-      sha256 = "1d87gxhah7iw28cily7r9dh2n2pa98lyz4prywmx35gm0gqz6kgn";
-    };
-    dependencies = [];
-  };
-
-  idris-vim = vimUtils.buildVimPluginFrom2Nix {
-    name = "idris-vim";
-    src = fetchgit {
-      url = "https://github.com/idris-hackers/idris-vim";
-      rev = "109f77ff32c60fb28d406e1801d6b4c2828f7280";
-    };
-    dependencies = [];
-  };
-
-  mercury-vim = vimUtils.buildVimPluginFrom2Nix {
-    name = "mercury-vim";
-    src = fetchgit {
-      url = "https://github.com/stewy33/mercury-vim";
-      rev = "8749bec220c684d644202d0fef3246ad0c73d5c4";
-      sha256 = "168d8n78jk6992chag40hqgwxwy8l12nyjq5jiigix73bzz7z3x3";
-    };
-    dependencies = [];
-  };
-
   vim-numbertoggle = vimUtils.buildVimPluginFrom2Nix {
     name = "vim-numbertoggle";
     src = fetchgit {
@@ -144,33 +96,6 @@
       rev = "cfaecb9e22b45373bb4940010ce63a89073f6d8b";
       sha256 = "1rrmvv7ali50rpbih1s0fj00a3hjspwinx2y6nhwac7bjsnqqdwi";
     };
-    dependencies = [];
-  };
-
-  vim-tidal = vimUtils.buildVimPluginFrom2Nix {
-    name = "vim-tidal";
-    src = fetchgit {
-      url = "https://github.com/tidalcycles/vim-tidal";
-      rev = "5606b8146b8ae2efbaa14b30207a4e0b70e5826c";
-      sha256 = "1x64d8jdlcw16pcp19xb0krd1jfqhva4xsxif8xc11pyj52sxxlh";
-    };
-    postInstall = ''
-      sed -i "s|  split term://tidal|  split term://$out/share/vim-plugins/vim-tidal/bin/tidal|g" $out/share/vim-plugins/vim-tidal/plugin/tidal.vim
-      cat plugin/tidal.vim | grep "term:"
-    '';
-    dependencies = [];
-  };
-
-
-  vimpyter = vimUtils.buildVimPluginFrom2Nix {
-    name = "vimpyter";
-    src = fetchgit {
-      url = "https://github.com/szymonmaszke/vimpyter";
-      rev = "25a0acbe81d445ece0df78cb23e2d5011df1b63a";
-      sha256 = "0kwf8ls5nar8wa36lfrbm3ysryim2pcz9ywv18rjqfp7wacz683c";
-    };
-    postInstall = ''
-    '';
     dependencies = [];
   };
 }

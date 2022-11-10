@@ -1,8 +1,6 @@
 { config, pkgs, ... }:
 let
-  haskell' = pkgs.haskell.packages.ghc864.ghcWithPackages (ps: with ps; [
-    Agda
-    tidal
+  haskell' = pkgs.haskell.packages.ghc922.ghcWithPackages (ps: with ps; [
   ]);
 in
   haskell'

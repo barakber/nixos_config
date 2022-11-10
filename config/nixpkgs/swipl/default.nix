@@ -12,8 +12,7 @@ stdenv.mkDerivation {
 
   buildInputs = [ cmake jdk gmp readline openssl libjpeg unixODBC
     libarchive libyaml db pcre libedit libossp_uuid
-    zlib freetype pkgconfig fontconfig ]
-  ++ stdenv.lib.optional stdenv.isDarwin makeWrapper;
+    zlib freetype pkgconfig fontconfig ];
 
   hardeningDisable = [ "format" ];
 
@@ -50,7 +49,7 @@ stdenv.mkDerivation {
     description = "A Prolog compiler and interpreter";
     license = "LGPL";
 
-    platforms = stdenv.lib.platforms.unix;
-    maintainers = [ stdenv.lib.maintainers.meditans ];
+    #platforms = stdenv.lib.platforms.unix;
+    #maintainers = [ stdenv.lib.maintainers.meditans ];
   };
 }

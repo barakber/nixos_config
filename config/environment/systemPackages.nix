@@ -31,14 +31,12 @@ let
   devops = with pkgs; [
     gnutls
     docker-compose
-    nixops
     azure-cli
-    awscli
-    amazon-ecs-cli
+    #awscli
+    #amazon-ecs-cli
     terraform
     terragrunt
     kubectl
-    kubernetes-helm
   ];
 
   textual = with pkgs; [
@@ -47,11 +45,8 @@ let
     tmux
     htop
     lnav
-    gcalcli
     neovim
-    neovim-remote
     lynx
-    weechat
   ];
 
   visual = with pkgs; [
@@ -69,15 +64,10 @@ let
     keynav
     xdotool
     onboard
-
-    #ds9
-    #quartus-prime
   ];
 
   im = with pkgs; [
-    skype
     zoom-us
-    #citrix_workspace
   ];
 
   haskell' = import ./haskell.nix { inherit config pkgs; };
@@ -91,8 +81,8 @@ let
     cmake
     nodejs
     jdk
-    mercury
-    coq
+    #mercury
+    #coq
     swiProlog
     #scryer-prolog
     cue
@@ -102,9 +92,9 @@ let
   ];
 
   music = with pkgs; [
-    pavucontrol
-    qjackctl
-    supercollider
+    #pavucontrol
+    #qjackctl
+    #supercollider
   ];
 
   other = with pkgs; [

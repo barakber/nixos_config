@@ -1,13 +1,13 @@
 { pkgs }:
 with pkgs;
-python36Packages.buildPythonApplication rec {
+python310Packages.buildPythonApplication rec {
   name = "ranger";
 
   meta = {
     description = "File manager with minimalistic curses interface";
     homepage = http://ranger.nongnu.org/;
-    license = stdenv.lib.licenses.gpl3;
-    platforms = stdenv.lib.platforms.unix;
+    #license = stdenv.lib.licenses.gpl3;
+    #platforms = stdenv.lib.platforms.unix;
   };
 
   src = fetchgit {
@@ -30,7 +30,7 @@ python36Packages.buildPythonApplication rec {
                             hexd
                             git
                             poppler_utils
-                            (python37.withPackages (ps: with ps; [jupytext pandoc setuptools]))
+                            (python310.withPackages (ps: with ps; [jupytext pandoc setuptools]))
                           ];
 
   checkPhase = ''
@@ -44,8 +44,6 @@ python36Packages.buildPythonApplication rec {
 
     cp ${rifle} ranger/config/rifle.conf
 
-    substituteInPlace ranger/__init__.py \
-      --replace "DEFAULT_PAGER = 'less'" "DEFAULT_PAGER = '${stdenv.lib.getBin less}/bin/less'"
     for i in ranger/config/rc.conf doc/config/rc.conf ; do
       substituteInPlace $i --replace /usr/share $out/share
     done

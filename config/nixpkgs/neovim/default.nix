@@ -8,17 +8,11 @@ in
         packages.vim-ranger.start = with plugins; [ vim-ranger ];
         packages.minimap.start = with plugins; [ minimap ];
         packages.vim-bookmarks.start = with plugins; [ vim-bookmarks ];
-        packages.vim-ripgrep.start = with plugins; [ vim-ripgrep ];
+#        packages.vim-ripgrep.start = with plugins; [ vim-ripgrep ];
         packages.git-messenger.start = with plugins; [ git-messenger ];
-        packages.mercury-vim.start = with plugins; [ mercury-vim ];
         #packages.vim-numbertoggle.start = with plugins; [ vim-numbertoggle ];
-        packages.vim-tidal.start = with plugins; [ vim-tidal ];
         #packages.vim-pandoc-markdown-preview.start = with plugins; [ vim-pandoc-markdown-preview ];
         packages.rainbow_csv.start = with plugins; [ rainbow_csv ];
-        packages.vimpyter.start = with plugins; [ vimpyter ];
-        #packages.LanguageClient-neovim.start = with plugins; [ LanguageClient-neovim ];
-        #packages.tlaplus.start = with plugins; [ tlaplus ];
-        #packages.repl-vim.start = with plugins; [ repl-vim ];
         customRC = ''
           " vim config
           let mapleader = ","

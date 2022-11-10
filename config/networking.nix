@@ -3,9 +3,9 @@ let
   networking = {
     hostName = "berkos";
 
-    wireless = {
-      enable = true;
-    };
+#    wireless = {
+#      enable = true;
+#    };
 
     firewall = {
       enable = true;
@@ -14,7 +14,7 @@ let
       allowedUDPPorts = [ 53 137 138 ];
     };
 
-    extraHosts = (import ./private.nix { inherit config pkgs; }).extraHosts;
+#    extraHosts = (import ./private.nix { inherit config pkgs; }).extraHosts;
 
     resolvconf.dnsExtensionMechanism = false;
   };
